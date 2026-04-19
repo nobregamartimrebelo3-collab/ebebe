@@ -1,0 +1,22 @@
+{
+  "name": "NovaPanel Minecraft Server",
+  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  "forwardPorts": [
+    25565,
+    25575,
+    19132,
+    8081
+  ],
+  "postStartCommand": "nohup bash .novapanel/bootstrap.sh > /tmp/novapanel-bootstrap.log 2>&1 < /dev/null & nohup node .novapanel/agent.js > /tmp/agent.log 2>&1 < /dev/null & disown; true",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "containerEnv": {
+    "NOVAPANEL_SUPABASE_URL": "https://donfdgppygopgsvauunv.supabase.co",
+    "NOVAPANEL_AGENT_TOKEN": "c05e9abd54ff8ca106cce7ef7e30b7eb15cd2ee560d3999ded36cb60ef5e534e",
+    "NOVAPANEL_KIND": "java",
+    "NOVAPANEL_JAVA_CMD": "java -Xms2G -Xmx4G -jar server.jar nogui"
+  }
+}
